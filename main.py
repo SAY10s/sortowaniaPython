@@ -1,16 +1,15 @@
-# This is a sample Python script.
+with open('liczby.txt', 'r') as f:
+    numbers = f.readline().split(', ')
+    print(numbers)
+    numbers = [int(l) for l in numbers] #konwersja typu zmiennej, zmienia każdy kolejny indeks na numer
+    print(numbers)
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+for i in range(len(numbers)):
+    print(numbers)
+    for j in range(0, len(numbers)-i-1):
+        if numbers[j] > numbers[j+1]:
+            numbers[j], numbers[j+1] = numbers[j+1], numbers[j]
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+with open('posortowane_liczby.txt', 'w') as f:
+    for number in numbers:
+        f.write(str(number) + ', ')
